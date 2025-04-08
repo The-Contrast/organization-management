@@ -1,5 +1,5 @@
 <div *ngIf="true" class="relative bg-white rounded-lg">
-    <label *ngIf="label" [for]="label" class="absolute bg-white text-gray-900 duration-300 floating-label origin-[0] px-2 pointer-events-none text-sm top-[16px] transform transition-all max-w-[98%] truncate" [ngClass]="{
+    <label *ngIf="label" [for]="label" class="absolute bg-white text-gray-900 duration-300 floating-label origin-[0] px-2 pointer-events-none text-sm top-[10px] transform transition-all max-w-[98%] truncate" [ngClass]="{
         '-translate-y-5 scale-75 text-[rgba(0,0,0,0.6)] left-1': (value || value==false), 
         'left-[4px]': (!value && value!=false)
     }">
@@ -10,8 +10,10 @@
     <div *ngIf="display_value" [title]="display_value" class="flex items-center gap-2 p-2 border border-gray-300 rounded-lg h-14">
       <span class="px-3 py-1 capitalize truncate border border-gray-300 rounded-lg min-w-12 max-w-52">
         {{ display_value }}
-        <button type="button" (click)="clearSelection()" class="bg-[#EBEBEB] rounded-full border z-[6] text-2xl text-[#666666] flex justify-center items-center absolute h-[30px] w-[30px] right-3 top-[15px]">
-        &times;
+        <button type="button" (click)="clearSelection()" class="bg-[#EBEBEB] rounded-full border z-[6] text-2xl text-[#666666] flex justify-center items-center text-center absolute h-[30px] w-[30px] right-3 top-[15px]">
+          <i class="flex justify-center items-center text-center mb-1">
+            &times;
+          </i>
         </button>
       </span>
     </div>

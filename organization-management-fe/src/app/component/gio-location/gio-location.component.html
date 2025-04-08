@@ -1,1 +1,13 @@
-<p>gio-location works!</p>
+<google-map
+  height="400px"
+  width="100%"
+  [center]="center"
+  [zoom]="zoom"
+  (mapClick)="selectLocation($event)">
+  <map-marker *ngIf="markerPosition" [position]="markerPosition"></map-marker>
+</google-map>
+
+<div *ngIf="markerPosition" class="mt-4">
+  <p>Latitude: {{ markerPosition.lat }}</p>
+  <p>Longitude: {{ markerPosition.lng }}</p>
+</div>

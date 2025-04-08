@@ -6,30 +6,44 @@ import { SelectInputComponent } from '../../component/select-input/select-input.
 import { TextAreaInputComponent } from '../../component/text-area-input/text-area-input.component';
 import { ButtonComponent } from '../../component/button/button.component';
 import { GioLocationComponent } from '../../component/gio-location/gio-location.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-orgnization-form',
-  imports: [FormsModule, ReactiveFormsModule,TextInputComponent,DateInputComponent,SelectInputComponent,TextAreaInputComponent,ButtonComponent,GioLocationComponent],
+  imports: [FormsModule, ReactiveFormsModule, TextInputComponent, DateInputComponent, SelectInputComponent, TextAreaInputComponent, ButtonComponent, GioLocationComponent, NgIf],
   templateUrl: './orgnization-form.component.html',
   styleUrl: './orgnization-form.component.css',
-  standalone:true,
+  standalone: true,
 })
 export class OrgnizationFormComponent {
-  form:FormGroup | any;
-constructor(public fb:FormBuilder){
-  this.form = this.fb.group({
-    name:[''],
-    description:[''],
-    address:[''],
-    phone:[''],
-    email:[''],
-  });
-}
+  form: FormGroup | any;
+  constructor(public fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: [''],
+      description: [''],
+      address: [''],
+      phone: [''],
+      email: [''],
+    });
+  }
   ngOnInit() {
     console.log('OrgnizationFormComponent initialized');
   }
 
   onSubmit() {
-    console.log(this.form.value,'Form submitted');
+    console.log(this.form.value, 'Form submitted');
   }
+  previewUrl: string | ArrayBuffer | null = null;
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewUrl = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
 }
