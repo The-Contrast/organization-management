@@ -6,11 +6,11 @@ import { SelectInputComponent } from '../../component/select-input/select-input.
 import { TextAreaInputComponent } from '../../component/text-area-input/text-area-input.component';
 import { ButtonComponent } from '../../component/button/button.component';
 import { GioLocationComponent } from '../../component/gio-location/gio-location.component';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-orgnization-form',
-  imports: [FormsModule, ReactiveFormsModule, TextInputComponent, DateInputComponent, SelectInputComponent, TextAreaInputComponent, ButtonComponent, GioLocationComponent, NgIf],
+  imports: [FormsModule, ReactiveFormsModule, TextInputComponent, DateInputComponent, SelectInputComponent, TextAreaInputComponent, ButtonComponent, GioLocationComponent, NgIf,NgFor],
   templateUrl: './orgnization-form.component.html',
   styleUrl: './orgnization-form.component.css',
   standalone: true,
@@ -60,5 +60,17 @@ export class OrgnizationFormComponent {
       reader.readAsDataURL(file);
     }
   }
+  employeeAttendance = true;
+  eventAttendance = true;
+  visitorTracking = true;
 
+  attendanceOptions = [
+    { label: 'Biometric Finger Print Machine or Single Mobile Used for Attendance', checked: true },
+    { label: 'NFC Card Based Attendance', checked: false },
+    { label: 'Employee Check In through Mobile App', checked: false },
+    { label: 'Employee or Visitors Scan QR code for Check In', checked: false },
+    { label: 'Face Detection to Automatically Check In', checked: false },
+    { label: 'Voice Detection to Automatically Check In', checked: false }
+  ];
+  nearOfficeToggle = true;
 }

@@ -121,3 +121,88 @@
         </main>
     </div>
 </div>
+<div class="p-6 space-y-6 max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold">Which of these requirements suit you?</h2>
+  
+    <div class="space-y-4">
+      <!-- Employee Attendance Toggle -->
+      <div class="flex items-center justify-between">
+        <label class="text-lg font-medium">Employee Attendance</label>
+        <input type="checkbox" class="toggle-checkbox" [(ngModel)]="employeeAttendance">
+      </div>
+  
+      <!-- Event Attendance Toggle -->
+      <div class="flex items-center justify-between">
+        <label class="text-lg">Do you conduct events for which you want to mark the attendance?</label>
+        <input type="checkbox" class="toggle-checkbox" [(ngModel)]="eventAttendance">
+      </div>
+  
+      <!-- Visitor Tracking Toggle -->
+      <div class="flex items-center justify-between">
+        <label class="text-lg">Do you want to track your visitors in Organization or Society or Events?</label>
+        <input type="checkbox" class="toggle-checkbox" [(ngModel)]="visitorTracking">
+      </div>
+    </div>
+  
+    <!-- Attendance Form Expectations -->
+    <div>
+      <h3 class="text-lg font-semibold mb-2">What form of attendance do you expect?</h3>
+      <div class="space-y-2">
+        <div *ngFor="let option of attendanceOptions">
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" [(ngModel)]="option.checked" class="form-checkbox">
+            <span>{{ option.label }}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="p-6 max-w-4xl mx-auto space-y-6">
+    <h2 class="text-2xl font-bold">Configure Office Locations</h2>
+  
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Office Card -->
+      <div class="border p-4 rounded-lg relative">
+        <h3 class="text-xl font-semibold">Head Office</h3>
+        <p class="text-sm text-gray-600 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="text-sm text-gray-600">City, State, Country - ZIP</p>
+  
+        <button class="absolute top-3 right-3 text-red-600 text-xl font-bold hover:scale-110 transition">
+          &minus;
+        </button>
+      </div>
+  
+      <!-- Add New Office -->
+      <div
+        class="border-2 border-dashed flex items-center justify-center text-center p-4 rounded-lg cursor-pointer hover:bg-gray-50 transition"
+      >
+        <div>
+          <div class="text-3xl">＋</div>
+          <p class="mt-2 font-medium">Add New Office Location</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Toggle Option -->
+    <div class="flex items-center justify-between mt-6">
+      <label class="text-sm sm:text-base">
+        Employees should be near office for checking in through mobile or QR scanning?
+      </label>
+      <input type="checkbox" class="toggle-checkbox" [(ngModel)]="nearOfficeToggle" />
+    </div>
+  
+    <!-- Info Text -->
+    <p class="text-sm text-gray-700 mt-4">
+      Kindly put in your office locations so as to configure the employees in those locations to take the attendance.
+      Can be done later as well
+    </p>
+  
+    <!-- Configure Holidays Button -->
+    <div class="flex justify-end">
+      <button class="border px-4 py-2 flex items-center space-x-2 rounded-md shadow-sm hover:bg-gray-100 transition">
+        <span>➜</span>
+        <span>Configure Holidays</span>
+      </button>
+    </div>
+  </div>
+    
