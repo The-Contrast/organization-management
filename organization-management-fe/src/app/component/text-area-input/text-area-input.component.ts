@@ -1,6 +1,6 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, EventEmitter, Injector, Input, Output } from '@angular/core';
-import { FormControl, FormsModule, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CapitalizStringPipe } from '../../pipes/capitaliz-string.pipe';
 
@@ -9,9 +9,16 @@ import { CapitalizStringPipe } from '../../pipes/capitaliz-string.pipe';
   imports: [NgIf,CommonModule,FormsModule,CapitalizStringPipe],
   standalone: true,
   templateUrl: './text-area-input.component.html',
-  styleUrl: './text-area-input.component.css'
+  styleUrl: './text-area-input.component.css',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: TextAreaInputComponent
+    },
+  ],
 })
-export class TextAreaInputComponent {
+export class TextAreaInputComponent implements ControlValueAccessor {
   paramValue: any;
 
   constructor(private injector: Injector, public route: ActivatedRoute) { }
@@ -21,8 +28,13 @@ export class TextAreaInputComponent {
     this.route.queryParams.subscribe(params => {
       this.paramValue = params['view'];
     });
+  
+    const ngControl: NgControl | null = this.injector.get(NgControl, null);
+    if (ngControl) {
+      this.control = ngControl.control as FormControl;
+    }
   }
-
+  
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -66,4 +78,10 @@ export class TextAreaInputComponent {
   fetch_clicked() {
     this.fetch_activated.emit()
   }
+  handleChange(val: any) {
+    this.value = val;
+    if (this.onChange) {
+      this.onChange(val);
+    }
+  }  
 }

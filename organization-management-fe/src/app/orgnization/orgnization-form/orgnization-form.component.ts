@@ -19,11 +19,26 @@ export class OrgnizationFormComponent {
   form: FormGroup | any;
   constructor(public fb: FormBuilder) {
     this.form = this.fb.group({
-      name: [''],
-      description: [''],
-      address: [''],
-      phone: [''],
-      email: [''],
+      designation: [''],
+      person_contact_number: [''],
+      person_email: [''],
+      person_name: [''],
+      website_url: [''],
+      organization_contact_number: [''],
+      organization_email: [''],
+      profile_image: [''],
+      address_line_1: [''],
+      address_line_2: [''],
+      country: [''],
+      state: [''],
+      city: [''],
+      no_of_employees: [''],
+      registration_number: [''],
+      year_of_establishment: [''],
+      organization_type: [''],
+      industry_type: [''],
+      organization_name: [''],
+
     });
   }
   ngOnInit() {

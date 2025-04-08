@@ -1,16 +1,23 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, Injector, Input, Output, SimpleChanges } from '@angular/core';
-import { FormControl, FormsModule, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-input',
   imports: [NgIf,NgFor,CommonModule,FormsModule],
   standalone: true,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: SelectInputComponent
+    }
+  ],
   templateUrl: './select-input.component.html',
   styleUrl: './select-input.component.css'
 })
-export class SelectInputComponent {
+export class SelectInputComponent implements ControlValueAccessor{
   @Input() icon = '';
   @Input() label = '';
   @Input() options: any = [];

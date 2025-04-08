@@ -1,6 +1,6 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, EventEmitter, Injector, Input, Output } from '@angular/core';
-import { FormControl, FormsModule, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { format } from 'date-fns'
 import { CapitalizStringPipe } from '../../pipes/capitaliz-string.pipe';
@@ -10,9 +10,16 @@ import { CapitalizStringPipe } from '../../pipes/capitaliz-string.pipe';
   imports: [NgIf,FormsModule,CommonModule,CapitalizStringPipe],
   standalone: true,
   templateUrl: './date-input.component.html',
-  styleUrl: './date-input.component.css'
+  styleUrl: './date-input.component.css',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: DateInputComponent
+    }
+  ]
 })
-export class DateInputComponent {
+export class DateInputComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() is_required: boolean = false;
   @Input() placeholder = '';

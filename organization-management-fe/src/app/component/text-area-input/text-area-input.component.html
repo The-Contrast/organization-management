@@ -3,6 +3,7 @@
       #textArea
       [disabled]="disabled || paramValue == 'true'"
       [(ngModel)]="value"
+      (ngModelChange)="handleChange($event)"
       (input)="textArea.style.height = 'auto'; textArea.style.height = textArea.scrollHeight + 'px'"
       [ngClass]="{ 'rounded-full': rounded, 'rounded-lg': !rounded }"
       [id]="label"

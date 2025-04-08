@@ -11,7 +11,7 @@
         </header>
         <main>
             <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-                <form>
+                <form [formGroup]="form">
                     <div class="space-y-12">
                         <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
                             <div>
@@ -21,35 +21,35 @@
 
                             <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
                                 <div class="sm:col-span-4 mt-2">
-                                    <app-text-input label="Organization Name"></app-text-input>
+                                    <app-text-input formControlName="organization_name" label="Organization Name"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-text-input label="Industry Type"></app-text-input>
+                                    <app-text-input formControlName="industry_type" label="Industry Type"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-select-input label="Organization Type" [options]="[{title:'Pvt Ltd',value:'Pvt Ltd'},{title:'Partnership',value:'Partnership'},{title:'NGO',value:'NGO'},{title:'Trust',value:'Trust'},{title:'etc',value:'etc'},]"></app-select-input>
+                                    <app-select-input formControlName="organization_type" label="Organization Type" [options]="[{title:'Pvt Ltd',value:'Pvt Ltd'},{title:'Partnership',value:'Partnership'},{title:'NGO',value:'NGO'},{title:'Trust',value:'Trust'},{title:'etc',value:'etc'},]"></app-select-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-date-input label="Year of Establishment" class="w-full"></app-date-input>
+                                    <app-date-input formControlName="year_of_establishment" label="Year of Establishment" class="w-full"></app-date-input>
                                 </div>
                                 <div class="sm:col-span-4 mt-2">
-                                    <app-text-input label="Registration Number / GSTIN / PAN"></app-text-input>
+                                    <app-text-input formControlName="registration_number" label="Registration Number / GSTIN / PAN"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4 mt-2">
-                                    <app-text-input label="No. of Employees"></app-text-input>
+                                    <app-text-input formControlName="no_of_employees" label="No. of Employees"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-select-input label="Country" [options]="[{title:'India',value:'India'}]"></app-select-input>
+                                    <app-select-input formControlName="country" label="Country" [options]="[{title:'India',value:'India'}]"></app-select-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-select-input label="State" [options]="[{title:'Maharashtra',value:'Maharashtra'}]"></app-select-input>
+                                    <app-select-input formControlName="state" label="State" [options]="[{title:'Maharashtra',value:'Maharashtra'}]"></app-select-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-select-input label="City" [options]="[{title:'Mumbai',value:'Mumbai'}]"></app-select-input>
+                                    <app-select-input formControlName="city" label="City" [options]="[{title:'Mumbai',value:'Mumbai'}]"></app-select-input>
                                 </div>
                                 <div class="sm:col-span-4 flex gap-2">
-                                    <app-text-area-input class="w-full" label="Address Line 1"></app-text-area-input>
-                                    <app-text-area-input class="w-full" label="Address Line 2"></app-text-area-input>
+                                    <app-text-area-input formControlName="address_line_1" class="w-full" label="Address Line 1"></app-text-area-input>
+                                    <app-text-area-input formControlName="address_line_2" class="w-full" label="Address Line 2"></app-text-area-input>
                                 </div>
                                 <div class="col-span-full">
                                     <label for="photo" class="block text-sm/6 font-medium text-gray-900">Photo</label>
@@ -62,7 +62,7 @@
                                                     clip-rule="evenodd" />
                                             </svg>
                                         </ng-template>
-                                        <input #fileInput id="file-upload" name="file-upload" type="file" accept="image/*" class="sr-only" (change)="onFileSelected($event)" />
+                                        <input formControlName="profile_image" #fileInput id="file-upload" name="file-upload" type="file" accept="image/*" class="sr-only" (change)="onFileSelected($event)" />
                                         <button type="button" (click)="fileInput.click()" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50">
                                             Change
                                         </button>
@@ -78,13 +78,13 @@
 
                             <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
                                 <div class="sm:col-span-4">
-                                    <app-text-input label="Email address" type="email"></app-text-input>
+                                    <app-text-input formControlName="organization_email" label="Email address" type="email"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-text-input label="Phone Number" type="number"></app-text-input>
+                                    <app-text-input formControlName="organization_contact_number" label="Contact Number" type="number"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-text-input label="Website URL" type="text"></app-text-input>
+                                    <app-text-input formControlName="website_url" label="Website URL" type="text"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4 w-full">
                                     <app-gio-location></app-gio-location>
@@ -98,23 +98,23 @@
                             </div>
                             <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
                                 <div class="sm:col-span-4">
-                                    <app-text-input label="Full Name" type="text"></app-text-input>
+                                    <app-text-input formControlName="person_name" label="Full Name" type="text"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-text-input label="Email ID" type="email"></app-text-input>
+                                    <app-text-input formControlName="person_email" label="Email ID" type="email"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-text-input label="Phone Number" type="number"></app-text-input>
+                                    <app-text-input formControlName="person_contact_number" label="Contact Number" type="number"></app-text-input>
                                 </div>
                                 <div class="sm:col-span-4">
-                                    <app-text-input label="Designation" type="text"></app-text-input>
+                                    <app-text-input formControlName="designation" label="Designation" type="text"></app-text-input>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="mt-6 flex items-center justify-end gap-x-6">
                         <app-button label="Cancel"></app-button>
-                        <app-button color="bg-[#E697AB] text-[#310000]" label="Submit"></app-button>
+                        <app-button color="bg-[#E697AB] text-[#310000]" label="Submit" (click)="onSubmit()"></app-button>
                     </div>
                 </form>
             </div>

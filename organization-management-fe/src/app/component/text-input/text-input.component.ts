@@ -1,6 +1,6 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, EventEmitter, Injector, Input, Output } from '@angular/core';
-import { FormControl, FormsModule, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,9 +8,17 @@ import { ActivatedRoute } from '@angular/router';
   imports: [NgIf,FormsModule,CommonModule],
   standalone: true,
   templateUrl: './text-input.component.html',
-  styleUrl: './text-input.component.css'
+  styleUrl: './text-input.component.css',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: TextInputComponent,
+    }
+  ],
 })
-export class TextInputComponent {
+export class TextInputComponent implements ControlValueAccessor {
+
 
   @Input() data_list = []
 
