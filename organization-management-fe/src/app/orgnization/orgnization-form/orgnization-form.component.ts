@@ -5,10 +5,11 @@ import { DateInputComponent } from '../../component/date-input/date-input.compon
 import { SelectInputComponent } from '../../component/select-input/select-input.component';
 import { TextAreaInputComponent } from '../../component/text-area-input/text-area-input.component';
 import { ButtonComponent } from '../../component/button/button.component';
+import { GioLocationComponent } from '../../component/gio-location/gio-location.component';
 
 @Component({
   selector: 'app-orgnization-form',
-  imports: [FormsModule, ReactiveFormsModule,TextInputComponent,DateInputComponent,SelectInputComponent,TextAreaInputComponent,ButtonComponent],
+  imports: [FormsModule, ReactiveFormsModule,TextInputComponent,DateInputComponent,SelectInputComponent,TextAreaInputComponent,ButtonComponent,GioLocationComponent],
   templateUrl: './orgnization-form.component.html',
   styleUrl: './orgnization-form.component.css',
   standalone:true,
