@@ -3,11 +3,12 @@
   width="100%"
   [center]="center"
   [zoom]="zoom"
-  (mapClick)="selectLocation($event)">
+  (mapClick)="select_location($event)">
   <map-marker *ngIf="markerPosition" [position]="markerPosition"></map-marker>
 </google-map>
 
-<div *ngIf="markerPosition" class="mt-4">
-  <p>Latitude: {{ markerPosition.lat }}</p>
-  <p>Longitude: {{ markerPosition.lng }}</p>
+<div *ngIf="markerPosition" class="mt-4 space-y-1 text-sm">
+  <p><strong>Latitude:</strong> {{ markerPosition.lat }}</p>
+  <p><strong>Longitude:</strong> {{ markerPosition.lng }}</p>
+  <p *ngIf="address"><strong>Address:</strong> {{ address }}</p>
 </div>

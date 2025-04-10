@@ -72,5 +72,5 @@ export class OrgnizationFormComponent {
     { label: 'Face Detection to Automatically Check In', checked: false },
     { label: 'Voice Detection to Automatically Check In', checked: false }
   ];
-  nearOfficeToggle = true;
+nearOfficeToggle = true;
 }
